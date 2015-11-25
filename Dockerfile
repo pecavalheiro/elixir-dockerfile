@@ -17,14 +17,14 @@
 #  docker run --rm -t -i phusion/baseimage:<VERSION> /sbin/my_init -- bash -l
 #
 # Thanks to @hqmq_ for the heads up
-FROM phusion/baseimage:0.9.16
+FROM phusion/baseimage:latest
 MAINTAINER Nizar Venturini @trenpixster
 
 # Important!  Update this no-op ENV variable when this Dockerfile
 # is updated with the current date. It will force refresh of all
 # of the base images and things like `apt-get update` won't be using
 # old cached versions when the Dockerfile is built.
-ENV REFRESHED_AT 2015-06-30
+ENV REFRESHED_AT 2015-11-23
 
 # Set correct environment variables.
 
@@ -68,6 +68,10 @@ RUN echo "deb http://packages.erlang-solutions.com/ubuntu trusty contrib" >> /et
     git \
     unzip \
     build-essential \
+    postgresql-client \
+    node \
+    npm \
+    inotify-tools \
     wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
