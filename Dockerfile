@@ -69,7 +69,7 @@ RUN echo "deb http://packages.erlang-solutions.com/ubuntu trusty contrib" >> /et
     unzip \
     build-essential \
     postgresql-client \
-    node \
+    nodejs-legacy \
     npm \
     inotify-tools \
     wget && \
@@ -83,7 +83,8 @@ RUN wget -q https://github.com/elixir-lang/elixir/releases/download/v1.1.1/Preco
     ln -s /elixir/bin/elixirc /usr/local/bin/elixirc && \
     ln -s /elixir/bin/elixir /usr/local/bin/elixir && \
     ln -s /elixir/bin/mix /usr/local/bin/mix && \
-    ln -s /elixir/bin/iex /usr/local/bin/iex
+    ln -s /elixir/bin/iex /usr/local/bin/iex && \
+    mix archive.install https://github.com/phoenixframework/phoenix/releases/download/v1.0.4/phoenix_new-1.0.4.ez
 
 # Install local Elixir hex and rebar
 RUN /usr/local/bin/mix local.hex --force && \
